@@ -15,7 +15,8 @@ int main()
         cin >> opcion;
         switch (opcion) {
         case 1: {
-
+            cout << "Hola mundo" << endl;
+            cout << "Hola hola";
             break;
         }case 2: {
 
