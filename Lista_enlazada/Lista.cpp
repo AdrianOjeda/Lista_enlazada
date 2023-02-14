@@ -15,7 +15,7 @@ void Lista::insertarInicio(int edad, char* nombre) {
 	Alumno* temp = new Alumno(edad,nombre, nullptr);
 	if (!header) {
 		header = temp;
-
+		cout << "Alumno ingresado con exito!" << endl;
 	}
 	else {
 		temp->sig = header;
