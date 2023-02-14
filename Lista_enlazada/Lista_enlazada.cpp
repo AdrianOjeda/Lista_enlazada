@@ -17,6 +17,7 @@ int main()
         case 1: {
             cout << "Hola mundo" << endl;
             cout << "Hola hola";
+            cout << "Cmabio 2";
             break;
         }case 2: {
 
