@@ -14,5 +14,6 @@ public:
 	void eliminarTodo();
 	void eliminar(int, char*);
 	void insertarFinal(int, char*);
+	bool vacia();
 
 };

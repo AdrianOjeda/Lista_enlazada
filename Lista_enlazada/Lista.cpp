@@ -27,7 +27,7 @@ void Lista::mostrar() {
 	Alumno* aux = header;
 
 	if (header) {
-		while (aux) {
+		while (aux != nullptr) {
 			cout <<"Nombre: "<<aux->nombre<<" | Edad: "<< aux->edad << endl;
 			aux = aux->sig;
 		}
@@ -41,54 +41,77 @@ void Lista::mostrar() {
 
 void Lista::eliminarTodo() {
 
-	//header = nullptr;
-	//cout << endl << "Lista vaciada" << endl;
-
+	Alumno* aux = header;
+	while (aux != nullptr) {
+		Alumno* temp = aux;
+		aux = aux->sig;
+		delete temp;
+	}
+	header = nullptr;
+	delete aux;
+	cout << "Lista eliminada con exito!" << endl;
 }
 
 void Lista::insertarFinal(int edad, char* nombre) {
 	Alumno* temp = new Alumno(edad, nombre, nullptr);
 	Alumno* ultimo = header;
-
-	if (header) {
-		while (ultimo->sig != nullptr) {
-			ultimo = ultimo->sig;
-		}
-		ultimo->sig = temp;
+	while (ultimo->sig != nullptr) {
+		ultimo = ultimo->sig;
 	}
-	else {
-		cout << endl << "Lista vacia" << endl;
-	}
+	ultimo->sig = temp;
 
 }
 
-void Lista::eliminar(int edad, char* nombre) {
+void Lista::eliminar( int edadAlumno, char* nombreAlumno) {
+	
 	Alumno* aux = header;
 	Alumno* auxAnterior = nullptr;
 	bool bandera = true;
 	if (header != nullptr) {
 		while (aux && bandera) {
-			if (edad == aux->edad) {
+			if (edadAlumno == aux->edad && strcmp(nombreAlumno, aux->nombre) == 0) {
 				bandera = false;
 			}
 			else {
 				auxAnterior = aux;
 				aux = aux->sig;
+				
 			}
 		}
 		if (aux == nullptr) {
 			cout << "No se encontro el Alumno" << endl;
-
+			
 		}
 		else if (aux == header) {
 			header = header->sig;
 			delete aux;
+			cout << "Alumno eliminado con exito!" << endl;
+			
 		}
 		else if (aux->sig == nullptr) {
+			auxAnterior->sig = nullptr;
 			delete aux;
+			cout << "Alumno eliminado con exito!" << endl;
+			
 		}
 		else {
-			cout << "Lista vacia" << endl;
+			auxAnterior->sig = aux->sig;
+			delete aux;
+			cout << "Alumno eliminado con exito!" << endl;
 		}
+		
 	}
+}
+
+bool Lista::vacia() {
+
+	if (header) {
+
+		return false;
+	}
+	else {
+		cout << endl << "Lista vacia" << endl;
+		return true;
+	}
+
 }

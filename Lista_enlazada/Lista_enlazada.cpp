@@ -1,4 +1,5 @@
 #include "Lista.h"
+#include <string.h>
 #include <iostream>
 using namespace std;
 
@@ -23,20 +24,55 @@ int main()
             cout << "Ingrese el nombre del alumno: ";
             cin.ignore();
             cin.getline(nombre, 30);
-            cin.ignore();
+            //cin.ignore();
             list->insertarInicio(edad, nombre);
             break;
         }case 2: {
+            cout << "*** Insertar alumno al final ***" << endl;
 
+            if (list->vacia() == false) {
+                cout << "Ingrese la edad del alumno: ";
+                cin >> edad;
+                cout << "Ingrese el nombre del alumno: ";
+                cin.ignore();
+                cin.getline(nombre, 30);
+               // cin.ignore();
+                list->insertarFinal(edad, nombre);
+            }
+            
+            
             break;
         }case 3: {
 
             break;
         }case 4: {
+            cout << "*** Eliminar alumno ***" << endl;
+
+            if (list->vacia() == false) {
+                cout << "Ingrese la edad del alumno que desea eliminar: ";
+                cin >> edad;
+                cin.ignore();
+                cout << "Ingrese el nombre del alumno que desea eliminar: ";
+                cin.getline(nombre, 30);
+                //cin.ignore();
+                
+                
+                list->eliminar(edad, nombre);
+                //cin.ignore();
+
+            }
+            
 
             break;
         }case 5: {
-
+            
+            cout << "*** Eliminando todo ***" << endl;
+            cout << endl;
+            if (list->vacia() == false) {
+                list->eliminarTodo();
+            }
+            
+            
             break;
         }case 6: {
 
